@@ -24,6 +24,8 @@ OKC AI Dispatch is an AI-curated daily newsletter that brings you the top 5-7 lo
 
 Visit the landing page to subscribe: [https://masonite.github.io/okc-ai-dispatch/](https://masonite.github.io/okc-ai-dispatch/)
 
+**Live URL**: https://masonite.github.io/okc-ai-dispatch/
+
 ## For Sponsors
 
 Interested in reaching engaged Oklahoma City residents? Contact us about sponsorship opportunities starting at $350/month.
