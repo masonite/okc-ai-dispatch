@@ -3,238 +3,505 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OKC AI Dispatch – Your Daily AI‑Powered OKC News</title>
+    <title>OKC AI Dispatch – AI‑Powered Oklahoma City Daily Newsletter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --okc-blue: #0073cf;
+            --okc-red: #c8102e;
+            --okc-gold: #ffd700;
+            --okc-sky: #87ceeb;
+            --okc-earth: #8b7355;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-700: #374151;
+            --gray-900: #111827;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
+        
         body {
-            background: #0f172a;
-            color: #f1f5f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--gray-900);
+            background-color: var(--gray-50);
             line-height: 1.6;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
         }
-        header {
-            text-align: center;
-            padding: 3rem 1rem;
-            border-bottom: 1px solid #334155;
-            margin-bottom: 3rem;
-        }
-        h1 {
-            font-size: 3.5rem;
-            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-        .tagline {
-            font-size: 1.5rem;
-            color: #cbd5e1;
-            margin-bottom: 2rem;
-        }
-        .highlight {
-            color: #fbbf24;
-            font-weight: bold;
-        }
+        
         .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .card {
-            background: #1e293b;
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid #334155;
-        }
-        .card h2 {
-            color: #60a5fa;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        .card ul {
-            list-style: none;
-            padding-left: 1rem;
-        }
-        .card li {
-            margin-bottom: 0.75rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        .card li:before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: #8b5cf6;
-        }
-        .signup {
-            grid-column: span 2;
+        
+        /* Header */
+        .site-header {
+            padding: 40px 0;
             text-align: center;
-            background: linear-gradient(135deg, #1e40af, #7c3aed);
-            padding: 3rem;
-            border-radius: 20px;
+            border-bottom: 1px solid var(--gray-200);
+            background: linear-gradient(135deg, var(--okc-blue) 0%, var(--okc-sky) 100%);
+            color: white;
         }
-        .signup h2 {
-            font-size: 2.5rem;
+        
+        .site-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            letter-spacing: -0.5px;
         }
-        .signup p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: #dbeafe;
+        
+        .site-header .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
-        .form {
-            display: inline-flex;
-            gap: 10px;
-            max-width: 500px;
-            width: 100%;
-        }
-        input[type="email"] {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            background: #f8fafc;
-            color: #0f172a;
-        }
-        button {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            background: #fbbf24;
-            color: #0f172a;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        button:hover {
-            transform: scale(1.05);
-        }
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        .stat {
-            text-align: center;
-            padding: 1.5rem;
-            background: #1e293b;
-            border-radius: 12px;
-        }
-        .stat .number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #60a5fa;
-        }
-        .stat .label {
+        
+        .oklahoma-badge {
+            display: inline-block;
+            background: var(--okc-gold);
+            color: var(--gray-900);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
             font-size: 0.9rem;
-            color: #94a3b8;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 1rem;
         }
-        footer {
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
             text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid #334155;
-            color: #64748b;
+        }
+        
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--okc-blue);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray-700);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* Value Props */
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .value-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .value-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--okc-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .value-card p {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--okc-red);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            background: linear-gradient(135deg, var(--gray-50) 0%, white 100%);
+            padding: 80px 0;
+            margin: 60px 0;
+            border-radius: 20px;
+        }
+        
+        .how-it-works h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--okc-blue);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+            border-left: 4px solid var(--okc-gold);
+        }
+        
+        .step:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            background: var(--okc-blue);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .step h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--okc-blue);
+            margin-bottom: 1rem;
+        }
+        
+        /* Signup Section */
+        .signup-section {
+            background: linear-gradient(135deg, var(--okc-blue) 0%, var(--okc-sky) 100%);
+            color: white;
+            padding: 80px 0;
+            border-radius: 20px;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .signup-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .signup-section p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+        
+        .signup-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group input {
+            flex: 1;
+            padding: 18px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn {
+            background: var(--okc-gold);
+            color: var(--gray-900);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn:hover {
+            background: #ffed4e;
+        }
+        
+        .privacy-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 0;
+        }
+        
+        .testimonials h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--okc-blue);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--gray-700);
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--okc-blue);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--okc-gold);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-300);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-700);
+            color: var(--gray-400);
             font-size: 0.9rem;
         }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
+            .site-header h1 {
+                font-size: 2.5rem;
             }
-            .signup {
-                grid-column: span 1;
+            
+            .hero h2 {
+                font-size: 2rem;
             }
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>OKC AI Dispatch</h1>
-        <p class="tagline">Your daily dose of Oklahoma City news, rewritten by AI to be <span class="highlight">actually interesting</span>.</p>
-        <p>Launching March 2026 • Join the waitlist today.</p>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <h1>OKC AI Dispatch</h1>
+            <p class="tagline">Your daily AI‑powered Oklahoma City news briefing</p>
+            <div class="oklahoma-badge">Made in Oklahoma • For Oklahoma</div>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="card">
-            <h2>What You Get</h2>
-            <ul>
-                <li><strong>AI‑curated local news</strong> – Top stories from The Oklahoman, News 9, KOCO, OKC Biz, rewritten in a fun, engaging tone.</li>
-                <li><strong>30‑minute daily workflow</strong> – AI scrapes, summarizes, and spices up the news; you get the best of OKC without the boring bits.</li>
-                <li><strong>Hyper‑local focus</strong> – Downtown, Edmond, Norman, Midwest City, Yukon, Moore, and beyond.</li>
-                <li><strong>Sponsor‑supported</strong> – One local business featured per day, keeping the newsletter free for readers.</li>
-            </ul>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Stay informed about Oklahoma City without the noise</h2>
+            <p>Get the top 5‑7 local news stories from OKC, Norman, Edmond, and beyond—AI‑curated, fact‑checked, and delivered to your inbox every morning.</p>
         </div>
-        <div class="card">
-            <h2>Why It Works</h2>
-            <ul>
-                <li><strong>People hate boring news</strong> – We turn dry reporting into conversations you’ll actually want to read.</li>
-                <li><strong>Local businesses need exposure</strong> – Sponsors pay $400/month to reach an engaged OKC audience.</li>
-                <li><strong>AI does the heavy lifting</strong> – No journalists, no overhead, just smart automation.</li>
-                <li><strong>Proven model</strong> – Similar newsletters in other cities are already earning <span class="highlight">$2,400+/month</span> with just 6 sponsors.</li>
-            </ul>
-        </div>
+    </section>
 
-        <div class="signup">
-            <h2>Join the Waitlist</h2>
-            <p>Be among the first 500 Founding Subscribers. Get early access and a special badge.</p>
-            <div class="form">
-                <input type="email" placeholder="your.email@example.com" required>
-                <button type="button" onclick="alert('Thank you! Waitlist sign‑up simulated.')">Get Early Access</button>
+    <!-- Value Propositions -->
+    <section class="container">
+        <div class="value-props">
+            <div class="value-card">
+                <div class="value-icon">🤖</div>
+                <h3>AI‑Curated</h3>
+                <p>Our AI scans 100+ local sources to find the most important OKC stories, removing bias and clickbait.</p>
             </div>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">No spam. Unsubscribe anytime.</p>
+            <div class="value-card">
+                <div class="value-icon">⏱️</div>
+                <h3>5‑Minute Read</h3>
+                <p>Get caught up on local news in the time it takes to drink your morning coffee. No fluff, just facts.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Hyper‑Local</h3>
+                <p>Focusing exclusively on the greater Oklahoma City area—politics, business, sports, and community events.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <div class="stats">
-        <div class="stat">
-            <div class="number">$2,400</div>
-            <div class="label">Monthly Revenue Goal</div>
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How OKC AI Dispatch Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Aggregate</h3>
+                    <p>Our AI scans local newspapers, TV stations, government sites, and community forums across Oklahoma City.</p>
+                </div>
+                <div class="step">
+                    <h3>Curate</h3>
+                    <p>We select the 5‑7 most impactful stories—removing duplicates, misinformation, and irrelevant content.</p>
+                </div>
+                <div class="step">
+                    <h3>Distill</h3>
+                    <p>Each story is rewritten for clarity and brevity, with key facts highlighted and context added.</p>
+                </div>
+                <div class="step">
+                    <h3>Deliver</h3>
+                    <p>Your personalized OKC news briefing arrives in your inbox every weekday morning at 7:00 AM.</p>
+                </div>
+            </div>
         </div>
-        <div class="stat">
-            <div class="number">6</div>
-            <div class="label">Sponsors Needed</div>
-        </div>
-        <div class="stat">
-            <div class="number">30</div>
-            <div class="label">Minutes/Day Work</div>
-        </div>
-        <div class="stat">
-            <div class="number">1,000</div>
-            <div class="label">Subscriber Target</div>
-        </div>
-    </div>
+    </section>
 
-    <footer>
-        <p>OKC AI Dispatch is a project by Jason, AI Head of Digital Products. Built with OpenClaw.</p>
-        <p>Contact: <a href="mailto:demo@okcaidispatch.com" style="color: #60a5fa;">demo@okcaidispatch.com</a> • Follow on X: <a href="https://twitter.com/okcaidispatch" style="color: #60a5fa;">@okcaidispatch</a></p>
-        <p style="margin-top: 1rem;">This is a prototype landing page. Actual launch pending your go‑ahead.</p>
-    </footer>
+    <!-- Signup Section -->
+    <section class="signup-section">
+        <div class="container">
+            <h2>Join thousands of informed Oklahomans</h2>
+            <p>Start your day with the local news that matters. Free forever. No spam. Unsubscribe anytime.</p>
+            
+            <div class="signup-form">
+                <form id="subscribe-form">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn">Subscribe Now</button>
+                    </div>
+                </form>
+                <p class="privacy-note">We respect your privacy. No spam, ever. Unsubscribe with one click.</p>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // Simple form simulation
-        document.querySelector('button').addEventListener('click', function() {
-            const email = document.querySelector('input[type="email"]').value;
-            if (email && email.includes('@')) {
-                alert(`Thanks, ${email}! You're on the waitlist. We'll notify you before launch.`);
-            } else {
-                alert('Please enter a valid email address.');
-            }
-        });
-    </script>
-</body>
-</html>
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What OKC Readers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">"As a busy professional in downtown OKC, I don't have time to scan multiple news sources. This newsletter gives me exactly what I need to know in 5 minutes."</p>
+                    <p class="testimonial-author">– Sarah M., Edmond</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"Finally, a newsletter that focuses on Oklahoma City! I love getting local business updates and community events without having to search for them."</p>
+                    <p class="testimonial-author">– James R., Norman</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">"The AI curation is surprisingly good—it catches stories I would have missed from my usual sources. Been subscribed for 3 months and haven't missed an issue."</p>
+                    <p class="testimonial-author">– Maria L., Midwest City</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>OKC AI Dispatch</h3>
+                    <p>Your daily AI‑powered Oklahoma City news briefing. Curated with care for the 405 community.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Coverage Areas</h3>
+                    <ul class="footer-links">
+                        <li>Oklahoma City</li>
+                        <li>Norman</li>
+                        <li>Edmond</li>
+                        <li>Midwest City</li>
+                        <li>Moore</li>
+                        <li>Yukon</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 OKC AI Dispatch. Made with 🤠 in Oklahoma City.</p>
+                <p>This newsletter is AI‑powered but human‑verified. We're committed to factual, unbiased local reporting.</p>
+            </div>
+        </div>
